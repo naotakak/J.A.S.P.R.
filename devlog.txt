@@ -1,0 +1,4 @@
+kinoshitaN -- 2017-10-21 15:00
+Initial commit with README and devlog.txt
+
+
