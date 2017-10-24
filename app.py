@@ -8,7 +8,7 @@ app.secret_key = os.urandom(32)
 
 @app.route("/")
 def root():
-	return "hi"
+	return "hi" 
 
 @app.route("/home")
 def home():

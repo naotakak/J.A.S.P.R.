@@ -14,3 +14,7 @@ shenoyA -- 2017-10-24 1:06
 Created flask app skeleton
 only the root route loads other routes dont return anything
 
+shenoyA -- 2017-10-24 1:16
+Created templates, utils, data folders
+
+
