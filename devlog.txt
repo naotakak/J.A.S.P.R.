@@ -19,3 +19,6 @@ Created templates, utils, data folders
 
 kadirJ -- 2017-10-24 11:47PM
 Fixed templates, utils, data folders
+
+kadirJ -- 2017-10-25 12:44AM
+Started story_db.py and stories.db
