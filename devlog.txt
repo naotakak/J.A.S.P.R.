@@ -4,21 +4,27 @@ Initial commit with README and devlog.txt
 kinoshitaN -- 2017-10-22 21:58
 Add design.pdf
 
-kinoshitaN -- 2017-10-24 11:48PM
+kinoshitaN -- 2017-10-24 11:48
 Update design.pdf
 
-cartegniA -- 2017-10-24 1:05PM
+cartegniA -- 2017-10-24 13:05
 Created base template
 
-shenoyA -- 2017-10-24 1:06PM
+shenoyA -- 2017-10-24 13:06
 Created flask app skeleton
 only the root route loads other routes dont return anything
 
-shenoyA -- 2017-10-24 1:16PM
+shenoyA -- 2017-10-24 13:16
 Created templates, utils, data folders
 
-kadirJ -- 2017-10-24 11:47PM
+kadirJ -- 2017-10-24 23:47
 Fixed templates, utils, data folders
 
-kadirJ -- 2017-10-25 12:44AM
+kadirJ -- 2017-10-25 00:44
 Started story_db.py and stories.db
+
+kinoshitaN -- 2017-10-25 12:51
+Fixed bug with story_db.py 
+
+cartegniA -- 2017-10-25 12:52
+Added template for login
