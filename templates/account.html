@@ -3,3 +3,17 @@
 {% block title %}
 Your Account
 {% endblock %}
+
+{% block content %}
+<h1>Create Account</h1>
+<form action="/auth", method = "POST">
+  <p>Enter login info</p>
+  <p><strong>Username:</strong></p>
+  <input type="text" name="NUser"><br>
+  <p><strong>Password</strong></p>
+  <input type="password" name="NPass"><br>
+  <input type="submit" value="Create">
+</form><br><br>
+<p><i>{{message}}</i></p> <!-- where eventual messages are printed -->
+<button type = "button">Create Account</button>
+{% endblock %}
