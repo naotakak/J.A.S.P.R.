@@ -48,5 +48,5 @@ Added template for login
 shenoyA-cheungJ -- 2017-10-25 13:16
 Added some database functions
 
-kinoshitaN -- 2017-10-25 21:08
-Update devlog headers
+kinoshitaN -- 2017-10-25 21:10
+Update devlog headers and README
