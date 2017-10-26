@@ -3,7 +3,7 @@ from os.path import isfile
 path = "data/data.db"
 def creato():
 	if isfile(path):
-		pass
+		print "already a database"
 	else:
 		db = sqlite3.connect(path)
 		cmd_story = "CREATE TABLE stories(id INT PRIMARY KEY, title TEXT,\
