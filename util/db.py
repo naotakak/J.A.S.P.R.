@@ -11,19 +11,12 @@ def get_db():
 def get_cursor(db):
 	return db.cursor()
 
-#def insert_into(db, ):
-#CREATING THE  TABLE/or connect
-if isfile(path):
-	pass
-else:
-	db = sqlite3.connect(path)
-	cmd_story = "CREATE TABLE stories(id INT PRIMARY KEY, title TEXT,\
-        rest_of_text TEXT, last_text TEXT);"
-        cmd_account = "CREATE TABLE account(Username TEXT,Password TEXT,\
-        STORIES TEXT, id INT PRIMARY KEY);"
-
-	db.execute(cmd)
-	print "makes database here"
+def insert_into(db, ID, title, rest_of_text, last_text):
+    cmd = "INSERT INTO stories VALUES("+ str(ID) + ",'" + title + "','" + rest_of_text  + "','" + title + "');"
+    print cmd
+    print db
+    db.execute(cmd)
+	
 #============================================================#
 #============================Accounts========================#
 #============================================================#

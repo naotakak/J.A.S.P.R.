@@ -49,8 +49,14 @@ Added template for login
 shenoyA-cheungJ -- 2017-10-25 13:16
 Added some database functions
 
+kadirJ -- 2017-10-25 13:18
+Initialized story database
+
 kinoshitaN -- 2017-10-25 21:10
 Update devlog headers and README
 
 cheungJ  -- 2017-10-25 21:10
 renamed and repurpose database file/database helper, added to init
+
+kadirJ -- 2017-10-26 12:57
+Added insert into and removed init
