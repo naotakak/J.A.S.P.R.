@@ -6,27 +6,7 @@ app = Flask(__name__)
 #genrerates random key
 app.secret_key = os.urandom(32)
 
-'''
-if true, can display the entire story
-if false, can only see the latest commit
-def can_view(user_id, story_id):
-	stories = db.get_list(user_id)
-	return story_id in stories 
-'''
 
-'''
-#Accounts database Functions
-def check_account(username):
-	command = "SELECT username FROM accounts"
-	usernames = c.execute(command)
-	for list_username in usernames:
-		if list_username == username:
-			return False
-	return True
-	
-def create_account(username, password):
-	command = "INSERT INTO accounts VALUES (" + username + ", " + password + ")" 
-'''
 
 
 @app.route("/")
