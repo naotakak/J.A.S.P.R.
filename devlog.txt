@@ -63,3 +63,6 @@ Added insert into and removed init
 
 kinoshitaN -- 2017-10-26 13:13
 Updated README
+
+cheungJ-kadirJ -- 2017-10-26 13:18
+Made function to close database and put it in insert
