@@ -50,3 +50,6 @@ Added some database functions
 
 kinoshitaN -- 2017-10-25 21:10
 Update devlog headers and README
+
+cheungJ  -- 2017-10-25 21:10
+renamed and repurpose database file/database helper, added to init
