@@ -61,5 +61,5 @@ renamed and repurpose database file/database helper, added to init
 kadirJ -- 2017-10-26 12:57
 Added insert into and removed init
 
-kinoshitaN -- 2017-10-26 13:03
+kinoshitaN -- 2017-10-26 13:13
 Updated README
