@@ -66,3 +66,6 @@ Updated README
 
 cheungJ-kadirJ -- 2017-10-26 13:18
 Made function to close database and put it in insert
+
+kinoshitaN -- 2017-10-26 17:26
+Updated README formatting
