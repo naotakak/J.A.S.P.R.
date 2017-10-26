@@ -14,6 +14,9 @@ def checklogged():
         return redirect(url_for('home')) #tells the user they are logged in
     return render_template('login.html') #otherwise renders the login page
 
+def addToSession(username):
+    session['username'] = username
+
 @app.route("/")
 def root():
 	return checklogged()
@@ -22,18 +25,27 @@ def root():
 def home():
 	return "HOME"
 
+@app.route("/display_create")
+def display_create():
+    return render_template("account.html")
+
 @app.route("/auth", methods = ['POST'])
 def login():
+    username = request.form["Nuser"]
+    password = request.form["NPass"]
 	#if check_account(request.form['User'], request.form['Pass']):
-	if True:
-		session['username'] = request.form['User']
-		return redirect(url_for('home'))
-	else:
-		flash('Your Username/Password was incorrect!')
+    if (True):
+        addToSession(username)
+        return redirect(url_for('home'))
+    else:
+        flash('Your Username/Password was incorrect!')
 
 @app.route("/create_account", methods = ['POST'])
 def create_account():
-	return render_template('account.html', message = request.form['NUser'])
+    username =  request.form["Nuser"]
+    password = request.form["NPass"]
+    addToSession(username)
+    return redirect(url_for('home'))
 
 @app.route("/view_contr_stories")
 def view_contr_stories():
