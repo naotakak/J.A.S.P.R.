@@ -11,11 +11,18 @@ def get_db():
 def get_cursor(db):
 	return db.cursor()
 
-def insert_into(db, ID, title, rest_of_text, last_text):
-    cmd = "INSERT INTO stories VALUES("+ str(ID) + ",'" + title + "','" + rest_of_text  + "','" + title + "');"
+def close(db):
+    db.commit()
+    db.close()
+
+def insert_into_s(ID, title, rest_of_text, last_text):
+    db = get_db()
+    c = get_cursor(db)
+    cmd = "INSERT INTO stories VALUES("+ str(ID) + ",'" + title + "','" + rest_of_text  + "','" + last_text + "');"
     print cmd
-    print db
-    db.execute(cmd)
+    print c
+    c.execute(cmd)
+    close(db)
 	
 #============================================================#
 #============================Accounts========================#
