@@ -3,7 +3,7 @@
 
 A collaborative storytelling game/website. 
 
-**Running program**
+**Running program** <br>
 First, ensure that the dependencies listed below are installed. If you have installed `flask` through `pip` in a virtualenv, make sure that your virtual environment is running when you run the program. After cloning our files from github, the only file you need to run is `app.py`. `app.py` will automatically initialize the needed databases in `data/` using `__init__.py` and `db.py` found in `util/`. <br>
 The file structure should be: <br>
 ```
@@ -22,7 +22,8 @@ devlog.txt
 README.md
 ```
 <br>
-After running `app.py` , you can now go to `localhost:5000` in your web browser, and the site should be accessible. 
+After running app.py, you can now go to localhost:5000 in your web browser, and the site should be accessible. 
+<br>
 
 **Dependencies**
 <ul>
