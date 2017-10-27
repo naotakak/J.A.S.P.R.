@@ -32,13 +32,22 @@ if true, can display the entire story
 if false, can only see the latest commit
 '''
 def can_view(user_id, story_id):
-	stories = db.get_list(user_id)
-	return story_id in stories 
+        db = sqlite3.connect("data.db")
+        c = db.cursor()
+	stories = get_list_ac(user_id,c)
+	return story_id in stories
 
 
+def get_list_ac(user_id, c):
+        data = c.execute("SELECT stories FROM accounts WHERE id = ?", user_id)
+        list = []
+        list = data[0].spilt(',')
+        list = map(int, list)
+        
 
-#Accounts database Functions
 def check_account(username):
+        db = sqlite3.connect("data.db")
+        c = db.cursor()
 	command = "SELECT username FROM accounts"
 	usernames = c.execute(command)
 	for list_username in usernames:
@@ -47,6 +56,19 @@ def check_account(username):
 	return True
 	
 def create_account(username, password):
+        db = get_db()
+        c = get_cursor(db)
 	command = "INSERT INTO accounts VALUES (" + username + ", " + password \
-        + ", ," + get_ac_id() + " )" 
+        + ",," + new_ac_id(c) + " )"
+        close(db)
+
+def new_ac_id(c):
+        db = get_db()
+        c = get_cursor(db)
+        if
+        command = "SELECT COUNT(*) FROM accounts"
+        new_id = c.execute(command) 
+        return new_id
+        
+        
 
