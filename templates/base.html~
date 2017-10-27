@@ -14,9 +14,6 @@
     {% endblock %}
 
     {% block footer %}
-    <form action="/logout" method = "GET">
-      <input type="submit" value="Log Out">
-    </form>
     <p><a href="/home">Home</a> <a href="/create_story">Create Story</a> <a href="/index_stories">Index of New Stories</a> <a href="/view_contr_stories">View Your Stories</a>
     <br><br><small>Copyright J.A.S.P.R. 2017</small>
     {% endblock %}
