@@ -73,5 +73,8 @@ Updated README formatting
 shenoyA -- 2017-10-26 18:17
 Added Jinja functionality to app.py
 
+cheungJ -- 2017-10-26 21:38
+Added account functions
+
 kadirJ -- 2017-10-26 23:16
 Added story database functions and db_test.py
