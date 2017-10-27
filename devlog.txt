@@ -90,3 +90,9 @@ Updated text in placeholder data/ text file
 
 shenoyA -- 2017-10-27 17:59
 Creating Accounts and Logging in works
+
+shenoyA -- 2017-10-27 19:16
+Switched out all the for loop iterating int the db functions with fetchone()
+Got rid of the display_create route, using POST/GET to differentiate login/create acocunt
+Homepage Now Displays One Story as a test
+Going to /home now redirects back to /auth if not logged in

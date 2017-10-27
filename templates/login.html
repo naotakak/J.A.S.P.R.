@@ -15,6 +15,8 @@ Login
   <input type="submit" value="Login">
 </form><br><br>
 <p><i>{{message}}</i></p> <!-- where eventual messages are printed -->
+<form action="/auth" method = "GET">
+  <input type="submit" value="Create Account">
+</form>
 <br>
-<a href="/display_create">Create Account</a>
 {% endblock %}
