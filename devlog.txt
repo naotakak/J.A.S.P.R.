@@ -78,3 +78,6 @@ Added account functions
 
 kadirJ -- 2017-10-26 23:16
 Added story database functions and db_test.py
+
+kadirJ -- 2017-10-27 00:28
+Added test cases for story database functions
