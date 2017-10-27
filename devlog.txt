@@ -87,3 +87,6 @@ Added test cases for story database functions
 
 kinoshitaN -- 2017-10-27 10:48
 Updated text in placeholder data/ text file
+
+shenoyA -- 2017-10-27 17:59
+Creating Accounts and Logging in works

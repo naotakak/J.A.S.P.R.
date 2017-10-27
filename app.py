@@ -3,8 +3,6 @@ from util import db
 import os
 
 app = Flask(__name__)
-#db = util.get_db()
-#c = util.get_cursor(db)
 
 #genrerates random key
 app.secret_key = os.urandom(32)
@@ -31,20 +29,24 @@ def display_create():
 
 @app.route("/auth", methods = ['POST'])
 def login():
-    username = request.form["Nuser"]
-    password = request.form["NPass"]
-	#if check_account(request.form['User'], request.form['Pass']):
-    if (True):
+    username = request.form["User"]
+    password = request.form["Pass"]
+    if db.check_account(username, password):
         addToSession(username)
         return redirect(url_for('home'))
     else:
-        flash('Your Username/Password was incorrect!')
+        return redirect(url_for('display_create'))
 
 @app.route("/create_account", methods = ['POST'])
 def create_account():
-    username =  request.form["Nuser"]
+    username =  request.form["NUser"]
     password = request.form["NPass"]
     addToSession(username)
+    if not db.check_account_exist(username):
+        print "Hello"
+        db.create_account(username, password)
+    else:
+        return redirect(url_for('display_create'))
     return redirect(url_for('home'))
 
 @app.route("/view_contr_stories")

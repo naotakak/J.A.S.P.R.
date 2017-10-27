@@ -8,7 +8,7 @@ def creato():
 		db = sqlite3.connect(path)
 		cmd_story = "CREATE TABLE stories(id INT PRIMARY KEY, title TEXT,\
 		rest_of_text TEXT, last_text TEXT);"
-		cmd_account = "CREATE TABLE account(Username TEXT,Password TEXT,\
+		cmd_account = "CREATE TABLE accounts(Username TEXT,Password TEXT,\
 		STORIES TEXT, id INT PRIMARY KEY);"
 
 		db.execute(cmd_story)
