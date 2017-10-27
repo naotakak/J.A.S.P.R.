@@ -89,14 +89,18 @@ def can_view(user_id, story_id):
 	stories = get_list_ac(user_id,c)
 	return story_id in stories
 
-
+'''
+grabs the list of stories from an userid
+'''
 def get_list_ac(user_id, c):
 	data = c.execute("SELECT stories FROM accounts WHERE id = ?", user_id)
 	list = []
 	list = data[0].spilt(',')
 	list = map(int, list)
 
-
+'''
+sees if a username is in the database
+'''
 def check_account_exist(username):
 	db = get_db()
 	c = get_cursor(db)
@@ -105,7 +109,9 @@ def check_account_exist(username):
 	for list_username in usernames:
 		return list_username != None
 	return False
-
+'''
+update the table with a new account
+'''
 def create_account(username, password):
 	db = get_db()
 	c = get_cursor(db)
@@ -113,7 +119,9 @@ def create_account(username, password):
 	print command
 	c.execute(command)
 	close(db)
-
+'''
+gets new id using num # rows
+'''
 def new_ac_id():
 	db = get_db()
 	c = get_cursor(db)
@@ -122,7 +130,9 @@ def new_ac_id():
 	count = result[0]
 	print count
 	return count
-
+'''
+authenticates username and password
+'''
 def check_account(username, password):
 	db = get_db()
 	c = get_cursor(db)
@@ -131,7 +141,9 @@ def check_account(username, password):
 		passdb = c.execute(command, (username,)).fetchone()
 		return passdb[0] == password
 	return False
-
+'''
+prints_accounts
+'''
 def print_accounts():
 	db = get_db()
 	c = get_cursor(db)
