@@ -99,3 +99,6 @@ Going to /home now redirects back to /auth if not logged in
 
 kinoshitaN -- 2017-10-27 19:49
 Opened a few issues addressing various topics - make sure fellow devs look at and address
+
+cheungJ -- 2017-10-27 19:50
+comments for account functions
