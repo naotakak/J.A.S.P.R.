@@ -67,6 +67,9 @@ Updated README
 cheungJ-kadirJ -- 2017-10-26 13:18
 Made function to close database and put it in insert
 
+cartegniA -- 2017-10-26 13:20
+Templates for account creation and reading story
+
 kinoshitaN -- 2017-10-26 17:26
 Updated README formatting
 
