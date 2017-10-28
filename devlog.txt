@@ -128,3 +128,6 @@ on if user has contributed
 User Can Now Create Stories
 Bugs: Typing single or double quotes in the box when editing/creating stories creates error
 Fix: Use parameters instead of string concatenation for sql commands
+
+kinoshitaN -- 2017-10-28 19:58
+Updated design.pdf to reflect new site design with editing and viewing stories
