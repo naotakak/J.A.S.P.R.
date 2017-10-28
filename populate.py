@@ -1,8 +1,8 @@
 from util import db
 
 print "\n======ADD STORIES======"
-db.create_story(0, "The Angry Hare", "Once there was a meme that lived. It Was Funny.")
-db.create_story(1, "Sasketchuan", "Bigfoot lived in Canadia. He is Hairy.")
+db.create_story("The Angry Hare", "Once there was a meme that lived. It Was Funny.")
+db.create_story("Sasketchuan", "Bigfoot lived in Canadia. He is Hairy.")
 print "============get_ids============"
 db.get_ids()
 print "============get_story============"

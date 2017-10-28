@@ -19,10 +19,10 @@ def close(db):
 #============================Stories=========================#
 #============================================================#
 
-def create_story(ID, title, text): #creates database entry for story
+def create_story(title, text): #creates database entry for story
 	db = get_db()
 	c = get_cursor(db)
-	cmd = "INSERT INTO stories VALUES("+ str(ID) + ",'" + title + "','','" + text + "');"
+	cmd = "INSERT INTO stories VALUES("+ str(len(get_ids())) + ",'" + title + "','','" + text + "');"
 	print cmd
 	c.execute(cmd)
 	close(db)
@@ -135,7 +135,7 @@ def new_ac_id():
 	command = "SELECT COUNT(*) FROM accounts"
 	result = c.execute(command).fetchone()
 	count = result[0]
-	#print count
+	print count
 	return count
 '''
 authenticates username and password

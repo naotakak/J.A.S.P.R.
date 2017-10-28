@@ -108,3 +108,6 @@ Added logout, populate.py adds admin usernmae/pass
 
 kadirJ -- 2017-10-28 00:25
 Fixed up and added comments for database functions and calls to them
+
+kadirJ -- 2017-10-28 00:45
+Added story id generation
