@@ -8,7 +8,7 @@ Home
 <table>
 <tr> <th> Title </th>
 {% for item in stories %}
-  <tr> <td> <a href="/story/{{ item }}">{{ stories[item][0] }}</a></td></tr>
+  <tr> <td> <a href=" {{ stories[item][2] }} ">{{ stories[item][0] }}</a></td></tr>
 {% endfor %}
 </table>
 {% endblock %}

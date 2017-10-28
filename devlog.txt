@@ -121,3 +121,10 @@ Home now displays all the stories
 cheungJ -- 2017-10-28 19:00
 spent an hr fixing split into spilt(fixing can_view)
 added update stores
+
+shenoyA -- 2017-10-28 19:33
+Now Displays full story or displays editing page depending
+on if user has contributed
+User Can Now Create Stories
+Bugs: Typing single or double quotes in the box when editing/creating stories creates error
+Fix: Use parameters instead of string concatenation for sql commands

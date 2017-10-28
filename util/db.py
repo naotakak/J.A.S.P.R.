@@ -22,10 +22,12 @@ def close(db):
 def create_story(title, text): #creates database entry for story
 	db = get_db()
 	c = get_cursor(db)
-	cmd = "INSERT INTO stories VALUES("+ str(len(get_ids())) + ",'" + title + "','','" + text + "');"
+	id = len(get_ids())
+	cmd = "INSERT INTO stories VALUES("+ str(id) + ",'" + title + "','','" + text + "');"
 	print cmd
 	c.execute(cmd)
 	close(db)
+	return id
 
 def get_ids(): #returns a list of all the id's
 	db = get_db()
@@ -94,7 +96,7 @@ def can_view(user_id, story_id):
 	db = get_db()
 	c = get_cursor(db)
 	stories = get_list_ac(user_id,c)
-        print stories
+	print stories
 	return story_id in stories
 
 def get_id(username):
@@ -109,34 +111,28 @@ grabs the list of stories from an userid
 '''
 def get_list_ac(user_id, c):
 	data = c.execute("SELECT stories FROM accounts WHERE id = ?", str(user_id)).fetchone()
-        print(data)        
+	print(data)
 	list = []
 	list = data[0].split(',')
-        #print(len(list))
-        if( list[0] != ""):
-                list = map(int, list)
+    #print(len(list))
+	if( list[0] != ""):
+		list = map(int, list)
 	return list
-
 '''
 Updates a persons stories list
 CALLED AFTER EDITING A STORY
 '''
-def stor_list_update( user_id, story_id):
-        db = get_db()
+def stor_list_update(user_id, story_id):
+	db = get_db()
 	c = get_cursor(db)
 	data = c.execute("SELECT stories FROM accounts WHERE id = ?", str(user_id)).fetchone()[0]
-        listo = get_list_ac(user_id, c)
-        if(listo[0] == ""):
-                c.execute("UPDATE accounts SET stories = ? WHERE id =" +str(user_id) , [str(story_id)])
-        else:
-                new = data + "," + str(story_id)
-                c.execute("UPDATE accounts SET stories = ? WHERE id =" +str(user_id), [new])
-
-        close(db)
-                
-                
-                
-
+	listo = get_list_ac(user_id, c)
+	if(listo[0] == ""):
+		c.execute("UPDATE accounts SET stories = ? WHERE id =" +str(user_id) , [str(story_id)])
+	else:
+		new = data + "," + str(story_id)
+		c.execute("UPDATE accounts SET stories = ? WHERE id =" + str(user_id), [new])
+	close(db)
 '''
 sees if a username is in the database
 '''
@@ -154,7 +150,7 @@ update the table with a new account
 def create_account(username, password):
 	db = get_db()
 	c = get_cursor(db)
-        command = "INSERT INTO accounts VALUES (\"" + username + "\", \"" + password + "\"," + "\"\"" + ", " + str(new_ac_id()) + " )"	        
+        command = "INSERT INTO accounts VALUES (\"" + username + "\", \"" + password + "\"," + "\"\"" + ", " + str(new_ac_id()) + " )"
 
 
 	print command
