@@ -117,3 +117,7 @@ shenoyA -- 2017-10-28 15:47
 /story/<story_id> allows to display a specific story
 flashes errors on login and create account for wrong user/pass
 Home now displays all the stories
+
+cheungJ -- 2017-10-28 19:00
+spent an hr fixing split into spilt(fixing can_view)
+added update stores
