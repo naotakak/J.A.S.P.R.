@@ -22,3 +22,11 @@ db.print_stories()
 print "\n======ADD ACCOUNTS======"
 db.create_account("admin", "password")
 db.create_account("admin2", "password")
+db.print_accounts()
+db.can_view(0,0)
+db.stor_list_update(0,2)
+db.print_accounts()
+db.stor_list_update(0,0)
+db.print_accounts()
+
+

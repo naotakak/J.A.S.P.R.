@@ -94,6 +94,7 @@ def can_view(user_id, story_id):
 	db = get_db()
 	c = get_cursor(db)
 	stories = get_list_ac(user_id,c)
+        print stories
 	return story_id in stories
 
 def get_id(username):
@@ -107,11 +108,34 @@ def get_id(username):
 grabs the list of stories from an userid
 '''
 def get_list_ac(user_id, c):
-	data = c.execute("SELECT stories FROM accounts WHERE id = ?", str(user_id))
+	data = c.execute("SELECT stories FROM accounts WHERE id = ?", str(user_id)).fetchone()
+        print(data)        
 	list = []
-	list = data[0].spilt(',')
-	list = map(int, list)
+	list = data[0].split(',')
+        #print(len(list))
+        if( list[0] != ""):
+                list = map(int, list)
 	return list
+
+'''
+Updates a persons stories list
+CALLED AFTER EDITING A STORY
+'''
+def stor_list_update( user_id, story_id):
+        db = get_db()
+	c = get_cursor(db)
+	data = c.execute("SELECT stories FROM accounts WHERE id = ?", str(user_id)).fetchone()[0]
+        listo = get_list_ac(user_id, c)
+        if(listo[0] == ""):
+                c.execute("UPDATE accounts SET stories = ? WHERE id =" +str(user_id) , [str(story_id)])
+        else:
+                new = data + "," + str(story_id)
+                c.execute("UPDATE accounts SET stories = ? WHERE id =" +str(user_id), [new])
+
+        close(db)
+                
+                
+                
 
 '''
 sees if a username is in the database
@@ -130,7 +154,9 @@ update the table with a new account
 def create_account(username, password):
 	db = get_db()
 	c = get_cursor(db)
-	command = "INSERT INTO accounts VALUES (\"" + username + "\", \"" + password + "\"," + "\"\"" + ", " + str(new_ac_id()) + " )"
+        command = "INSERT INTO accounts VALUES (\"" + username + "\", \"" + password + "\"," + "\"\"" + ", " + str(new_ac_id()) + " )"	        
+
+
 	print command
 	c.execute(command)
 	close(db)
