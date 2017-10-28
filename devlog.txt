@@ -102,3 +102,6 @@ Opened a few issues addressing various topics - make sure fellow devs look at an
 
 cheungJ -- 2017-10-27 19:50
 comments for account functions
+
+shenoyA -- 2017-10-27 20:33
+Added logout, populate.py adds admin usernmae/pass 
