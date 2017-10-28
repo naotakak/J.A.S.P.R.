@@ -1,6 +1,6 @@
 <table>
 <tr> <th> title </th>
 {% for item in stories %}
-  <tr> <td> {{ item }} </td> </tr>
+  <tr> <td> <a href="/story/{{ item }}">{{ stories[item][0] }}</a></td></tr>
 {% endfor %}
 </table>

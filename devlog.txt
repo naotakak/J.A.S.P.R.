@@ -104,10 +104,16 @@ cheungJ -- 2017-10-27 19:50
 comments for account functions
 
 shenoyA -- 2017-10-27 20:33
-Added logout, populate.py adds admin usernmae/pass 
+Added logout, populate.py adds admin usernmae/pass
 
 kadirJ -- 2017-10-28 00:25
 Fixed up and added comments for database functions and calls to them
 
 kadirJ -- 2017-10-28 00:45
 Added story id generation
+
+shenoyA -- 2017-10-28 15:47
+/story route displays story
+/story/<story_id> allows to display a specific story
+flashes errors on login and create account for wrong user/pass
+Home now displays all the stories

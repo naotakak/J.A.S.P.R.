@@ -14,7 +14,11 @@ Login
   <input type="password" name="Pass"><br>
   <input type="submit" value="Login">
 </form><br><br>
-<p><i>{{message}}</i></p> <!-- where eventual messages are printed -->
+{# Displays the error messages that was flashed (if any)  #}
+{% set messages = get_flashed_messages() %}
+{% for message in messages %}
+  <h2>{{message}}</h2>
+{% endfor %}<!-- where eventual messages are printed -->
 <form action="/auth" method = "GET">
   <input type="submit" value="Create Account">
 </form>

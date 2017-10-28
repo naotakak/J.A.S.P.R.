@@ -111,6 +111,7 @@ def get_list_ac(user_id, c):
 	list = []
 	list = data[0].spilt(',')
 	list = map(int, list)
+	return list
 
 '''
 sees if a username is in the database

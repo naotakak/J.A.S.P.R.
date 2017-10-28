@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, url_for, request, session
+from flask import Flask, render_template, redirect, url_for, request, session, flash
 from util import db
 import os
 
@@ -40,7 +40,7 @@ def home():
     stories_dict = {}
     for id in stories_ids:
         story = db.get_story(id)
-        stories_dict[story[0]] = story[1] + " " + story[2]
+        stories_dict[id] = [story[0], story[1] + " " + story[2]]
     print stories_dict
     return render_template('home.html', stories = stories_dict)
 
@@ -64,8 +64,8 @@ def login():
             return redirect(url_for('home'))
         else:
             print("Incorrect Username and password")
+            flash("*Incorrect Username/password*")
             return redirect(url_for('root'))
-            #flash(error)
     #User Pressed Create Account Button
     elif request.method == 'GET':
         print("User wants to create account\n")
@@ -88,12 +88,15 @@ def create_account():
         addToSession(username)
     else:
         print "Username not Available"
-        #flash
+        flash("Username Not Available")
     return redirect(url_for('home'))
 
-@app.route("/story", methods = ['GET'])
-def view_story():
-    story_id = request.form["ID"]
+@app.route("/story/<int:story_id>")
+def view_story(story_id):
+    if not logged():
+        return redirect(url_for('root'))
+    print "***VIEW STORY***\n"
+    print "Story Id: " + str(story_id)
     story = db.get_story(story_id)
     title = story[0]
     text = story[1] + " " + story[2]
