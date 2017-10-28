@@ -91,10 +91,17 @@ if true, can display the entire story
 if false, can only see the latest commit
 '''
 def can_view(user_id, story_id):
-	db = sqlite3.connect("data.db")
-	c = db.cursor()
+	db = get_db()
+	c = get_cursor(db)
 	stories = get_list_ac(user_id,c)
 	return story_id in stories
+
+def get_id(username):
+	db = get_db()
+	c = get_cursor(db)
+	command = "SELECT id FROM accounts WHERE username = \"" + username + "\""
+	id = c.execute(command).fetchone()[0]
+	return id
 
 '''
 grabs the list of stories from an userid

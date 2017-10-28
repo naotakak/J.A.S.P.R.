@@ -12,6 +12,7 @@ def logged():
 
 def addToSession(username):
     session['username'] = username
+    session['ID'] = db.get_id(username)
 
 @app.route("/")
 def root():
@@ -27,15 +28,21 @@ def root():
         print("User not logged in, redirecting to login")
         return render_template('login.html')
 
+'''
+Displays All Stories
+'''
 @app.route("/home")
 def home():
     print("***HOME***\n")
     if not logged():
         return redirect(url_for('root'))
-    dbstory = db.get_story(0)
-    if dbstory == '':
-        return render_template('story.html', title = dbstory[0], story = dbstory[2])
-    return render_template('story.html', title = dbstory[0], story = dbstory[1] + " " + dbstory[2])
+    stories_ids = db.get_ids()
+    stories_dict = {}
+    for id in stories_ids:
+        story = db.get_story(id)
+        stories_dict[story[0]] = story[1] + " " + story[2]
+    print stories_dict
+    return render_template('home.html', stories = stories_dict)
 
 '''
 If the user is trying to login, take the username
@@ -77,29 +84,20 @@ def create_account():
     #log them in
     if not db.check_account_exist(username):
         print "Username Available, making account..."
-        addToSession(username)
         db.create_account(username, password)
+        addToSession(username)
     else:
         print "Username not Available"
         #flash
     return redirect(url_for('home'))
 
-@app.route("/view_contr_stories")
-def view_contr_stories():
-	return
-
-@app.route("/story")
+@app.route("/story", methods = ['GET'])
 def view_story():
-	return render_template("story.html")
-
-#could be /edit only
-@app.route("/create_story")
-def create_story():
-	return
-
-@app.route("/index_stories")
-def index_stories():
-	return
+    story_id = request.form["ID"]
+    story = db.get_story(story_id)
+    title = story[0]
+    text = story[1] + " " + story[2]
+    return render_template("story.html", title = title, story = text)
 
 @app.route("/edit")
 def edit_story():
@@ -107,6 +105,7 @@ def edit_story():
 
 @app.route("/logout")
 def logout():
+    print "***LOG OUT***"
     if logged():
         session.pop('username')
     return redirect(url_for("root"))
