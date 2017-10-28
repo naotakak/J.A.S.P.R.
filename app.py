@@ -33,6 +33,8 @@ def home():
     if not logged():
         return redirect(url_for('root'))
     dbstory = db.get_story(0)
+	if dbstory == '':
+		return render_template('story.html', title = dbstory[0], story = dbstory[2])
     return render_template('story.html', title = dbstory[0], story = dbstory[1] + " " + dbstory[2])
 
 '''

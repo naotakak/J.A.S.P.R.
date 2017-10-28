@@ -19,10 +19,10 @@ def close(db):
 #============================Stories=========================#
 #============================================================#
 
-def create_story(ID, title, rest_text, last_text):
+def create_story(ID, title, text): #creates database entry for story
 	db = get_db()
 	c = get_cursor(db)
-	cmd = "INSERT INTO stories VALUES("+ str(ID) + ",'" + title + "','" + rest_text + "','" + last_text + "');"
+	cmd = "INSERT INTO stories VALUES("+ str(ID) + ",'" + title + "','','" + text + "');"
 	print cmd
 	c.execute(cmd)
 	close(db)
@@ -31,20 +31,23 @@ def get_ids(): #returns a list of all the id's
 	db = get_db()
 	c = get_cursor(db)
 	ans = c.execute("SELECT id FROM stories;").fetchall()
+	for x in range(0, len(ans)):
+		ans[x] = ans[x][0]
 	close(db)
 	print ans
 	return ans
 
-def get_story(ID): #returns full story in text
+def get_story(ID): #returns a list with title, rest_of_text, and last_text
 	db = get_db()
 	c = get_cursor(db)
 	cmd = "SELECT title, rest_of_text, last_text FROM stories WHERE id = " + str(ID) +";"
 	text = c.execute(cmd).fetchone()
 	ans = [text[0], text[1], text[2]]
+	close(db)
 	print ans
 	return ans
 
-def get_last(ID):
+def get_last(ID): #returns the text in the last_text
 	db = get_db()
 	c = get_cursor(db)
 	cmd = "SELECT last_text FROM stories WHERE id = " + str(ID) +";"
@@ -54,7 +57,7 @@ def get_last(ID):
 	print ans
 	return ans
 
-def update_story(ID,text):
+def update_story(ID,text): #adds the given text to the story in database
 	db = get_db()
 	read = get_cursor(db)
 	write = get_cursor(db)
@@ -62,19 +65,23 @@ def update_story(ID,text):
 	rest_of_text = read.execute(command).fetchone()[0]
 	command = "SELECT last_text FROM stories WHERE id = " + str(ID) +";"
 	last_text = read.execute(command).fetchone()[0]
-	cmd = "UPDATE stories SET rest_of_text = '" + rest_of_text + " " +  last_text + "' WHERE id = " + str(ID) + ";"
+	if rest_of_text == '':
+		cmd = "UPDATE stories SET rest_of_text = '" +  last_text + "' WHERE id = " + str(ID) + ";"
+	else:
+		cmd = "UPDATE stories SET rest_of_text = '" + rest_of_text + " " +  last_text + "' WHERE id = " + str(ID) + ";"
 	write.execute(cmd)
 	cmd = "UPDATE stories SET last_text = '" + text + "' WHERE id = " + str(ID) + ";"
 	write.execute(cmd)
 	close(db)
 
-def print_stories():
+def print_stories(): #prints all stories
 	db = get_db()
 	c = get_cursor(db)
 	command = "SELECT * FROM stories"
 	result = c.execute(command)
 	for story in result:
 		print story
+	close(db)
 
 #============================================================#
 #============================Accounts========================#

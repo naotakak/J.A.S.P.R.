@@ -105,3 +105,6 @@ comments for account functions
 
 shenoyA -- 2017-10-27 20:33
 Added logout, populate.py adds admin usernmae/pass 
+
+kadirJ -- 2017-10-28 00:25
+Fixed up and added comments for database functions and calls to them
