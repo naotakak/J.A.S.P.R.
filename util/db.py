@@ -68,9 +68,9 @@ def update_story(ID,text): #adds the given text to the story in database
 	if rest_of_text == '':
 		cmd = "UPDATE stories SET rest_of_text = '" +  last_text + "' WHERE id = " + str(ID) + ";"
 	else:
-		cmd = "UPDATE stories SET rest_of_text = '" + rest_of_text + " " +  last_text + "' WHERE id = " + str(ID) + ";"
+		cmd = "UPDATE stories SET rest_of_text = '" + rest_of_text + "\n " +  last_text + "\n' WHERE id = " + str(ID) + ";"
 	write.execute(cmd)
-	cmd = "UPDATE stories SET last_text = '" + text + "' WHERE id = " + str(ID) + ";"
+	cmd = "UPDATE stories SET last_text = '" + text + "\n' WHERE id = " + str(ID) + ";"
 	write.execute(cmd)
 	close(db)
 
@@ -107,7 +107,7 @@ def get_id(username):
 grabs the list of stories from an userid
 '''
 def get_list_ac(user_id, c):
-	data = c.execute("SELECT stories FROM accounts WHERE id = ?", user_id)
+	data = c.execute("SELECT stories FROM accounts WHERE id = ?", str(user_id))
 	list = []
 	list = data[0].spilt(',')
 	list = map(int, list)

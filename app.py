@@ -40,6 +40,8 @@ def home():
     stories_dict = {}
     for id in stories_ids:
         story = db.get_story(id)
+        link = ""
+        #LINK NEEDS TO CHANGE DEPENING ON IF USER CAN VIEW
         stories_dict[id] = [story[0], story[1] + " " + story[2]]
     print stories_dict
     return render_template('home.html', stories = stories_dict)
@@ -91,6 +93,11 @@ def create_account():
         flash("Username Not Available")
     return redirect(url_for('home'))
 
+'''
+Displays A Story
+/story/<int:story_id> allows us to
+display a specific story
+'''
 @app.route("/story/<int:story_id>")
 def view_story(story_id):
     if not logged():
@@ -102,9 +109,26 @@ def view_story(story_id):
     text = story[1] + " " + story[2]
     return render_template("story.html", title = title, story = text)
 
-@app.route("/edit")
-def edit_story():
-	return
+'''
+Allows User to edit a story
+'''
+@app.route("/edit/<int:story_id>", methods = ["GET", "POST"])
+def edit_story(story_id):
+    if not logged():
+        return redirect(url_for('root'))
+    print "***EDIT***\n"
+    print "Story Id: " + str(story_id)
+    if request.method == "POST":
+        print "updating story..."
+        new_text = request.form["addition"]
+        db.update_story(story_id, new_text)
+        #Once we've Edited, display it
+        return redirect("/story/" + str(story_id))
+    story = db.get_story(story_id)
+    title = story[0]
+    text = story[2]
+    return render_template("edit.html", title = title, story = text, story_id=story_id)
+
 
 @app.route("/logout")
 def logout():

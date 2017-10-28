@@ -7,7 +7,7 @@
 {% block content %}
 <h1>{{title}}</h1>
 <p>{{story}}</p>
-<form action="/edit", method = "POST">
+<form action="/edit/{{ story_id }}", method = "POST">
   <p><strong>Continue the story:</strong></p>
   <input type="text" name="addition"><br>
   <input type="submit" value="Submit">
