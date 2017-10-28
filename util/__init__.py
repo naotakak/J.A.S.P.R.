@@ -13,6 +13,7 @@ def creato():
 
 		db.execute(cmd_story)
 		db.execute(cmd_account)
+		print "makes database here"
                
                          
 creato()
