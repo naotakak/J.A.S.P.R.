@@ -1,11 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block content %}
 <table>
 <tr> <th> Title </th>
 {% for item in stories %}
   <tr> <td> <a href="/story/{{ item }}">{{ stories[item][0] }}</a></td></tr>
 {% endfor %}
 </table>
-<br>
-<br>
-<form action="/logout" method = "GET">
-  <input type="submit" value="Log Out">
-</form>
+{% endblock %}
