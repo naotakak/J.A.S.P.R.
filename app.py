@@ -73,14 +73,13 @@ def create_account():
     password = request.form["NPass"]
     print("Inputted:\n Username: " + username + "\n Password: "+ password + "\n")
     #log them in
-    addToSession(username)
     if not db.check_account_exist(username):
         print "Username Available, making account..."
+        addToSession(username)
         db.create_account(username, password)
     else:
         print "Username not Available"
         #flash
-        return redirect(url_for('display_create'))
     return redirect(url_for('home'))
 
 @app.route("/view_contr_stories")
