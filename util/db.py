@@ -30,7 +30,7 @@ def create_story(ID, title, rest_text, last_text):
 def get_ids(): #returns a list of all the id's
 	db = get_db()
 	c = get_cursor(db)
-	ans = c.execute("SELECT id FROM stories;")
+	ans = c.execute("SELECT id FROM stories;").fetchall()
 	close(db)
 	print ans
 	return ans
@@ -62,7 +62,7 @@ def update_story(ID,text):
 	rest_of_text = read.execute(command).fetchone()[0]
 	command = "SELECT last_text FROM stories WHERE id = " + str(ID) +";"
 	last_text = read.execute(command).fetchone()[0]
-	cmd = "UPDATE stories SET rest_of_text = '" + rest_of_text + last_text + "' WHERE id = " + str(ID) + ";"
+	cmd = "UPDATE stories SET rest_of_text = '" + rest_of_text + " " +  last_text + "' WHERE id = " + str(ID) + ";"
 	write.execute(cmd)
 	cmd = "UPDATE stories SET last_text = '" + text + "' WHERE id = " + str(ID) + ";"
 	write.execute(cmd)
@@ -128,7 +128,7 @@ def new_ac_id():
 	command = "SELECT COUNT(*) FROM accounts"
 	result = c.execute(command).fetchone()
 	count = result[0]
-	print count
+	#print count
 	return count
 '''
 authenticates username and password

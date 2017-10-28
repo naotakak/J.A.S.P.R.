@@ -104,6 +104,12 @@ def index_stories():
 def edit_story():
 	return
 
+@app.route("/logout")
+def logout():
+    if logged():
+        session.pop('username')
+    return redirect(url_for("root"))
+
 
 if __name__ == '__main__':
     app.debug = True
