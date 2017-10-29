@@ -141,5 +141,6 @@ Hashed Passwords!
 kadirJ -- 2017-10-28 20:51
 Continued parameterization of account database functions and closed database in said functions
 
-kinoshitaN -- 2017-10-28 22:04
+kinoshitaN -- 2017-10-28 22:21
 Cleaned up HTML formatting in templates and updated readme to reflect password hashing
+Created changes.txt
