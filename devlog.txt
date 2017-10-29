@@ -1,4 +1,4 @@
-J.A.S.P.R.
+BJ.A.S.P.R.
 Alessandro Cartegni, Jasper Cheung, Jawadul Kadir, Naotaka Kinoshita, Anish Shenoy
 SoftDev1 Pd 7
 
@@ -152,3 +152,10 @@ Created changes.txt
 
 kadirJ -- 2017-10-29 1:17
 Made text area input rather than text input
+
+kinoshitaN -- 2017-10-29 9:54
+Removed populate.py, we have 3 accounts for testing
+Username	     Password
+admin		     password
+admin2		     password
+jaspr		     jaspr
