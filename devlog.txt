@@ -149,3 +149,6 @@ Continued parameterization of account database functions and closed database in 
 kinoshitaN -- 2017-10-28 22:21
 Cleaned up HTML formatting in templates and updated readme to reflect password hashing
 Created changes.txt
+
+kadirJ -- 2017-10-29 1:17
+Made text area input rather than text input

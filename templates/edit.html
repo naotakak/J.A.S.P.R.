@@ -11,8 +11,8 @@
 
     <p>{{story}}</p>
     <form action="/edit/{{ story_id }}", method = "POST">
-        <strong>Continue the story:</strong>
-        <input type="text" name="addition"><br>
+        <strong>Continue the story:</strong><br>
+        <textarea rows="10" cols="40" name="addition"></textarea><br>
         <input type="submit" value="Submit">
     </form>
     <br>
