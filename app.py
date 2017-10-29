@@ -103,6 +103,7 @@ def create_account():
     else:
         print "Username not Available"
         flash("Username Not Available")
+        return render_template("account.html")
     return redirect(url_for('home'))
 
 '''
