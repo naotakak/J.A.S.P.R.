@@ -3,6 +3,7 @@ from util import db
 print "\n======ADD STORIES======"
 db.create_story("The Angry Hare", "Once there was a meme that lived. It Was Funny.")
 db.create_story("Sasketchuan", "Bigfoot lived in Canadia. He is Hairy.")
+db.create_story("Kobe Bryant", "He Is Clutch")
 print "============get_ids============"
 db.get_ids()
 print "============get_story============"
@@ -28,5 +29,3 @@ db.stor_list_update(0,2)
 db.print_accounts()
 db.stor_list_update(0,0)
 db.print_accounts()
-
-
