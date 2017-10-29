@@ -17,8 +17,12 @@ templates/
  |  base.html
  |  login.html
  |  story.html
+ |  create.html
+ |  edit.html
+ |  home.html
 design.pdf
 devlog.txt
+changes.txt
 README.md
 ```
 <br>
