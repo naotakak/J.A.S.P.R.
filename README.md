@@ -47,3 +47,7 @@ After running app.py, you can now go to localhost:5000 in your web browser, and 
   
   `from os.path: isfile`
   </li>
+  <li>
+  
+  `hashlib`
+  </li>
