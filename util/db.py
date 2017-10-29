@@ -106,7 +106,7 @@ def get_id(username):
 	db = get_db()
 	c = get_cursor(db)
 	command = "SELECT id FROM accounts WHERE username = ?"
-	ID = c.execute(command, username).fetchone()[0]
+	ID = c.execute(command, (username, )).fetchone()[0]
 	close(db)
 	return ID
 
@@ -144,7 +144,7 @@ def check_account_exist(username):
 	db = get_db()
 	c = get_cursor(db)
 	command = "SELECT username FROM accounts WHERE username = ?"
-	usernames = c.execute(command, username)
+	usernames = c.execute(command, (username,))
 	for list_username in usernames:
 		return list_username != None
 	close(db)
@@ -183,7 +183,7 @@ def check_account(username, password):
         password = hash_object.hexdigest()
 	if(check_account_exist(username)):
 		command = "SELECT password FROM accounts WHERE username = ? "
-		passdb = c.execute(command, username).fetchone()
+		passdb = c.execute(command, (username, )).fetchone()
 		close(db)
 		return passdb[0] == password
 	close(db)
