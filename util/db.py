@@ -5,13 +5,13 @@ from os.path import isfile
 
 path = "data/data.db"
 
-def get_db():
+def get_db(): #returns connection to database
 	return sqlite3.connect(path)
 
-def get_cursor(db):
+def get_cursor(db): #returns cursor to database
 	return db.cursor()
 
-def close(db):
+def close(db): #commits to and closes database
 	db.commit()
 	db.close()
 
@@ -22,10 +22,10 @@ def close(db):
 def create_story(title, text): #creates database entry for story
 	db = get_db()
 	c = get_cursor(db)
-	id = len(get_ids())
-	cmd = "INSERT INTO stories VALUES("+ str(id) + ",'" + title + "','','" + text + "');"
+	ID = len(get_ids())
+	cmd = "INSERT INTO stories VALUES(?, ?, ? ,?);"
 	print cmd
-	c.execute(cmd)
+	c.execute(cmd,(str(ID), title, '', text))
 	close(db)
 	return id
 
@@ -42,8 +42,8 @@ def get_ids(): #returns a list of all the id's
 def get_story(ID): #returns a list with title, rest_of_text, and last_text
 	db = get_db()
 	c = get_cursor(db)
-	cmd = "SELECT title, rest_of_text, last_text FROM stories WHERE id = " + str(ID) +";"
-	text = c.execute(cmd).fetchone()
+	cmd = "SELECT title, rest_of_text, last_text FROM stories WHERE id = ?"
+	text = c.execute(cmd, str(ID)).fetchone()
 	ans = [text[0], text[1], text[2]]
 	close(db)
 	print ans
@@ -52,8 +52,8 @@ def get_story(ID): #returns a list with title, rest_of_text, and last_text
 def get_last(ID): #returns the text in the last_text
 	db = get_db()
 	c = get_cursor(db)
-	cmd = "SELECT last_text FROM stories WHERE id = " + str(ID) +";"
-	result = c.execute(cmd).fetchone()
+	cmd = "SELECT last_text FROM stories WHERE id = ?"
+	result = c.execute(cmd, str(ID)).fetchone()
 	ans = result[0]
 	close(db)
 	print ans
@@ -63,17 +63,18 @@ def update_story(ID,text): #adds the given text to the story in database
 	db = get_db()
 	read = get_cursor(db)
 	write = get_cursor(db)
-	command = "SELECT rest_of_text FROM stories WHERE id = " + str(ID) +";"
-	rest_of_text = read.execute(command).fetchone()[0]
-	command = "SELECT last_text FROM stories WHERE id = " + str(ID) +";"
-	last_text = read.execute(command).fetchone()[0]
+	command = "SELECT rest_of_text FROM stories WHERE id = ?"
+	rest_of_text = read.execute(command, str(ID)).fetchone()[0]
+	command = "SELECT last_text FROM stories WHERE id = ?"
+	last_text = read.execute(command, str(ID)).fetchone()[0]
 	if rest_of_text == '':
-		cmd = "UPDATE stories SET rest_of_text = '" +  last_text + "' WHERE id = " + str(ID) + ";"
+		cmd = "UPDATE stories SET rest_of_text = ? WHERE id = ?"
+		write.execute(cmd, (last_text, str(ID)))
 	else:
-		cmd = "UPDATE stories SET rest_of_text = '" + rest_of_text + "\n " +  last_text + "\n' WHERE id = " + str(ID) + ";"
-	write.execute(cmd)
-	cmd = "UPDATE stories SET last_text = '" + text + "\n' WHERE id = " + str(ID) + ";"
-	write.execute(cmd)
+		cmd = "UPDATE stories SET rest_of_text = ? WHERE id = ?"
+		write.execute(cmd, (rest_of_text + "\n " +  last_text + "\n", str(ID)))
+	cmd = "UPDATE stories SET last_text = ? WHERE id = ?"
+	write.execute(cmd, (text + "\n", str(ID)))
 	close(db)
 
 def print_stories(): #prints all stories
@@ -102,8 +103,8 @@ def can_view(user_id, story_id):
 def get_id(username):
 	db = get_db()
 	c = get_cursor(db)
-	command = "SELECT id FROM accounts WHERE username = \"" + username + "\""
-	id = c.execute(command).fetchone()[0]
+	command = "SELECT id FROM accounts WHERE username = ?"
+	id = c.execute(command, username).fetchone()[0]
 	return id
 
 '''
