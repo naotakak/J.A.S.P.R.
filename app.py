@@ -37,20 +37,24 @@ def home():
     if not logged():
         return redirect(url_for('root'))
     stories_ids = db.get_ids()
-    stories_dict = {}
+    contr_stories_dict = {}
+    edit_stories_dict = {}
     for id in stories_ids:
         story = db.get_story(id)
         link = ""
+        #Dict Format: {story_id: [Title, Rest_Text, Last_Text, Link to view]}
         #Change the link depending on if user has contributed
         if db.can_view(session['ID'], id):
-            link = "/story/"
+            link = "/story/" + str(id)
+            contr_stories_dict[id] = [story[0], story[1] + " " + story[2], link]
         else:
-            link = "/edit/"
-        link += str(id)
-        #Dict Format: {story_id: [Title, Rest_Text, Last_Text, Link to view]}
-        stories_dict[id] = [story[0], story[1] + " " + story[2], link]
-    print stories_dict
-    return render_template('home.html', stories = stories_dict)
+            link = "/edit/" + str(id)
+            edit_stories_dict[id] = [story[0], story[1] + " " + story[2], link]
+    print "Contributed Stories: "
+    print contr_stories_dict
+    print "Editable Stories: "
+    print edit_stories_dict
+    return render_template('home.html', contributed_stories = contr_stories_dict, edit_stories = edit_stories_dict)
 
 '''
 If the user is trying to login, take the username

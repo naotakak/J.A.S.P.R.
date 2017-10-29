@@ -1,32 +1,38 @@
 {% extends "base.html" %}
 
 {% block title %}
-Login
+  Login
 {% endblock %}
 
 {% block content %}
-<h3>Login</h3>
-  <form action="/auth", method = "POST">
-    <p>Enter login info</p>
+  <center>
+    <h3>Login</h3>
+    <form action="/auth", method = "POST">
+      <p>Enter login info</p>
       <strong>Username:</strong>
-        <input type="text" name="User"><br>
+      <input type="text" name="User"><br>
       <strong>Password:</strong>
-        <input type="password" name="Pass"><br>
+      <input type="password" name="Pass"><br>
       <input type="submit" value="Login">
-  </form><br><br>
+    </form>
+    <br>
+    <br>
 
-{# Displays the error messages that was flashed (if any)  #}
-{% set messages = get_flashed_messages() %}
-{% for message in messages %}
-  <h4>{{message}}</h4>
-{% endfor %}<!-- where eventual messages are printed -->
-
-<form action="/auth" method = "GET">
-  <input type="submit" value="Create Account">
-</form>
-<br>
+    {# Displays the error messages that was flashed (if any)  #}
+    {% set messages = get_flashed_messages() %}
+    {% for message in messages %}
+      <h4>{{message}}</h4>
+    {% endfor %}<!-- where eventual messages are printed -->
+    
+    <form action="/auth" method = "GET">
+      <input type="submit" value="Create Account">
+    </form>
+    <br>
+  </center>
 {% endblock %}
 
 {% block footer %}
-<br><br><small>Copyright J.A.S.P.R. 2017</small>
+  <center>
+    <br><br><small>Copyright J.A.S.P.R. 2017</small>
+  </center>
 {% endblock %}

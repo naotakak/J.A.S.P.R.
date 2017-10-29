@@ -1,17 +1,21 @@
 {% extends "base.html" %}
 
 {% block title %}
-{{title}}
+  {{title}}
 {% endblock %}
 
 {% block content %}
-<h3>You haven't contributed to the story yet!</h3>
-<h2>{{title}}</h2>
+  <center>
+    <h3>You haven't contributed to the story yet!</h3>
+    <h2>{{title}}</h2>
 
-<p>{{story}}</p>
-<form action="/edit/{{ story_id }}", method = "POST">
-  <strong>Continue the story:</strong>
-    <input type="text" name="addition"><br>
-  <input type="submit" value="Submit">
-</form><br><br>
+    <p>{{story}}</p>
+    <form action="/edit/{{ story_id }}", method = "POST">
+        <strong>Continue the story:</strong>
+        <input type="text" name="addition"><br>
+        <input type="submit" value="Submit">
+    </form>
+    <br>
+    <br>
+  </center>
 {% endblock%}

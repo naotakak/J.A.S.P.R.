@@ -1,14 +1,24 @@
 {% extends "base.html" %}
 
 {% block title %}
-Home
+  Home
 {% endblock %}
 
-{% block content %}
-<table>
-<tr> <th> Title </th></tr>
-{% for item in stories %}
-  <tr> <td> <a href=" {{ stories[item][2] }} ">{{ stories[item][0] }}</a></td></tr>
-{% endfor %}
-</table>
+{% block content%}
+  <center>
+    <h1>Welcome!</h1>
+    <table border="1">
+      <tr> <th> Stories You Can View, But Can't Edit </th> </tr>
+      {% for item in contributed_stories %}
+        <tr> <td> <a href=" {{ contributed_stories[item][2] }} ">{{ contributed_stories[item][0] }}</a></td></tr>
+      {% endfor %}
+    </table>
+    <br>
+    <table border = "1">
+      <tr> <th> Stories You Can Edit, But Not View </th></tr>
+      {% for item in edit_stories %}
+        <tr> <td> <a href=" {{ edit_stories[item][2] }} ">{{ edit_stories[item][0] }}</a></td></tr>
+      {% endfor %}
+    </table>
+  </center>
 {% endblock %}
