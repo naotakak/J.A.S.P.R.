@@ -118,6 +118,11 @@ shenoyA -- 2017-10-28 15:47
 flashes errors on login and create account for wrong user/pass
 Home now displays all the stories
 
+cartegniA -- 2017-10-28 16:59
+fixed various footers
+added logout buttons
+added inheritance with home template
+
 cheungJ -- 2017-10-28 19:00
 spent an hr fixing split into spilt(fixing can_view)
 added update stores
