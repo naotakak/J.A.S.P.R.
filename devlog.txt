@@ -154,7 +154,7 @@ kadirJ -- 2017-10-29 1:17
 Made text area input rather than text input
 
 kinoshitaN -- 2017-10-29 9:54
-Removed populate.py, we have 3 accounts for testing
+Removed populate.py and updated README, we have 3 accounts for testing
 Username	     Password
 admin		     password
 admin2		     password
