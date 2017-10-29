@@ -134,3 +134,6 @@ Updated design.pdf to reflect new site design with editing and viewing stories
 
 kadirJ -- 2017-10-28 20:16
 Made SQL commands use parameters rather than string concatenation to avoid errors
+
+cheungJ-- 2017-10-28 20:37
+Hashed Passwords!
