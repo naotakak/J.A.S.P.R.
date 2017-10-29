@@ -2,6 +2,7 @@
 
 import sqlite3
 from os.path import isfile
+import hashlib
 
 path = "data/data.db"
 
@@ -151,6 +152,8 @@ update the table with a new account
 def create_account(username, password):
 	db = get_db()
 	c = get_cursor(db)
+	hash_object = hashlib.sha1(password)
+        password = hash_object.hexdigest()
         command = "INSERT INTO accounts VALUES (\"" + username + "\", \"" + password + "\"," + "\"\"" + ", " + str(new_ac_id()) + " )"
 
 
@@ -174,6 +177,8 @@ authenticates username and password
 def check_account(username, password):
 	db = get_db()
 	c = get_cursor(db)
+	hash_object = hashlib.sha1(password)
+        password = hash_object.hexdigest()
 	if(check_account_exist(username)):
 		command = "SELECT password FROM accounts WHERE username = ? "
 		passdb = c.execute(command, (username,)).fetchone()
