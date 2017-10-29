@@ -13,8 +13,7 @@
       <input type="text" name="User"><br>
       <strong>Password:</strong>
       <input type="password" name="Pass"><br>
-      <input type="submit" value="Login">
-    </form>
+      <h3>Login</h3>
     <br>
     <br>
 
@@ -23,7 +22,7 @@
     {% for message in messages %}
       <h4>{{message}}</h4>
     {% endfor %}<!-- where eventual messages are printed -->
-    
+
     <form action="/auth" method = "GET">
       <input type="submit" value="Create Account">
     </form>
