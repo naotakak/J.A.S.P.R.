@@ -27,7 +27,7 @@ README.md
 ```
 <br>
 After running app.py, you can now go to localhost:5000 in your web browser, and the site should be accessible. 
-<br>
+<br><br>
 
 **Dependencies**
 <ul>
