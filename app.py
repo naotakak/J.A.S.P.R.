@@ -7,13 +7,23 @@ app = Flask(__name__)
 #genrerates random key
 app.secret_key = os.urandom(32)
 
+'''
+Checks If User is logged in
+'''
 def logged():
     return session.has_key('username')
 
+'''
+Adds User To session
+Adds both username and ID
+'''
 def addToSession(username):
     session['username'] = username
     session['ID'] = db.get_id(username)
 
+'''
+Redirects User To Login Or Homepage
+'''
 @app.route("/")
 def root():
     print("\n***ROOT***\n")
@@ -39,6 +49,8 @@ def home():
     stories_ids = db.get_ids()
     contr_stories_dict = {}
     edit_stories_dict = {}
+    #Splits the stories into two seperate dictionaries
+    #One for viewable and one for ediable
     for id in stories_ids:
         story = db.get_story(id)
         link = ""
