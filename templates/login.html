@@ -5,20 +5,22 @@ Login
 {% endblock %}
 
 {% block content %}
-<h1>Login</h1>
-<form action="/auth", method = "POST">
-  <p>Enter login info</p>
-  <p><strong>Username:</strong></p>
-  <input type="text" name="User"><br>
-  <p><strong>Password</strong></p>
-  <input type="password" name="Pass"><br>
-  <input type="submit" value="Login">
-</form><br><br>
+<h3>Login</h3>
+  <form action="/auth", method = "POST">
+    <p>Enter login info</p>
+      <strong>Username:</strong>
+        <input type="text" name="User"><br>
+      <strong>Password:</strong>
+        <input type="password" name="Pass"><br>
+      <input type="submit" value="Login">
+  </form><br><br>
+
 {# Displays the error messages that was flashed (if any)  #}
 {% set messages = get_flashed_messages() %}
 {% for message in messages %}
-  <h2>{{message}}</h2>
+  <h4>{{message}}</h4>
 {% endfor %}<!-- where eventual messages are printed -->
+
 <form action="/auth" method = "GET">
   <input type="submit" value="Create Account">
 </form>

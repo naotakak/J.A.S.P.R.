@@ -14,11 +14,12 @@
     {% endblock %}
 
     {% block footer %}
+    <br>
     <form action="/logout" method = "GET">
       <input type="submit" value="Log Out">
+    | <a href="/home">Home</a> | <a href="/create_story">Create Story</a>
     </form>
-    <p><a href="/home">Home</a> <a href="/create_story">Create Story</a>
-    <br><br><small>Copyright J.A.S.P.R. 2017</small>
+    <br><small>Copyright J.A.S.P.R. 2017</small>
     {% endblock %}
   </body>
 </html>

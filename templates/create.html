@@ -5,12 +5,12 @@
 {% endblock %}
 
 {% block content %}
-<h1>Create A New Story!</h1>
+<h3>Create A New Story!</h3>
 <form action="/create_story", method = "POST">
-  <p><strong>Title</strong></p>
-  <input type="text" name="title"><br>
-  <p><strong>Text</strong></p>
-  <input type="text" name="text"><br>
+  <strong>Title</strong>
+    <input type="text" name="title"><br>
+  <strong>Text</strong>
+    <input type="text" name="text"><br>
   <input type="submit" value="Submit">
 </form><br><br>
 {% endblock%}
