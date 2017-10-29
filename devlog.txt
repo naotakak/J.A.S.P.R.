@@ -137,3 +137,6 @@ Made SQL commands use parameters rather than string concatenation to avoid error
 
 cheungJ-- 2017-10-28 20:37
 Hashed Passwords!
+
+kadirJ -- 2017-10-28 20:51
+Continued parameterization of account database functions and closed database in said functions

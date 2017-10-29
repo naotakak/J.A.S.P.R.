@@ -28,7 +28,7 @@ def create_story(title, text): #creates database entry for story
 	print cmd
 	c.execute(cmd,(str(ID), title, '', text))
 	close(db)
-	return id
+	return ID
 
 def get_ids(): #returns a list of all the id's
 	db = get_db()
@@ -99,14 +99,16 @@ def can_view(user_id, story_id):
 	c = get_cursor(db)
 	stories = get_list_ac(user_id,c)
 	print stories
+	close(db)
 	return story_id in stories
 
 def get_id(username):
 	db = get_db()
 	c = get_cursor(db)
 	command = "SELECT id FROM accounts WHERE username = ?"
-	id = c.execute(command, username).fetchone()[0]
-	return id
+	ID = c.execute(command, username).fetchone()[0]
+	close(db)
+	return ID
 
 '''
 grabs the list of stories from an userid
@@ -130,10 +132,10 @@ def stor_list_update(user_id, story_id):
 	data = c.execute("SELECT stories FROM accounts WHERE id = ?", str(user_id)).fetchone()[0]
 	listo = get_list_ac(user_id, c)
 	if(listo[0] == ""):
-		c.execute("UPDATE accounts SET stories = ? WHERE id =" +str(user_id) , [str(story_id)])
+		c.execute("UPDATE accounts SET stories = ? WHERE id = ?", (str(story_id), str(user_id)))
 	else:
 		new = data + "," + str(story_id)
-		c.execute("UPDATE accounts SET stories = ? WHERE id =" + str(user_id), [new])
+		c.execute("UPDATE accounts SET stories = ? WHERE id = ?", (new, str(user_id)))
 	close(db)
 '''
 sees if a username is in the database
@@ -141,10 +143,11 @@ sees if a username is in the database
 def check_account_exist(username):
 	db = get_db()
 	c = get_cursor(db)
-	command = "SELECT username FROM accounts WHERE username = \"" + username + "\""
-	usernames = c.execute(command)
+	command = "SELECT username FROM accounts WHERE username = ?"
+	usernames = c.execute(command, username)
 	for list_username in usernames:
 		return list_username != None
+	close(db)
 	return False
 '''
 update the table with a new account
@@ -154,11 +157,9 @@ def create_account(username, password):
 	c = get_cursor(db)
 	hash_object = hashlib.sha1(password)
         password = hash_object.hexdigest()
-        command = "INSERT INTO accounts VALUES (\"" + username + "\", \"" + password + "\"," + "\"\"" + ", " + str(new_ac_id()) + " )"
-
-
+        command = "INSERT INTO accounts VALUES (?, ?, ?, ?)"
 	print command
-	c.execute(command)
+	c.execute(command, (username, password, '', str(new_ac_id())))
 	close(db)
 '''
 gets new id using num # rows
@@ -170,6 +171,7 @@ def new_ac_id():
 	result = c.execute(command).fetchone()
 	count = result[0]
 	print count
+	close(db)
 	return count
 '''
 authenticates username and password
@@ -181,8 +183,10 @@ def check_account(username, password):
         password = hash_object.hexdigest()
 	if(check_account_exist(username)):
 		command = "SELECT password FROM accounts WHERE username = ? "
-		passdb = c.execute(command, (username,)).fetchone()
+		passdb = c.execute(command, username).fetchone()
+		close(db)
 		return passdb[0] == password
+	close(db)
 	return False
 '''
 prints_accounts
@@ -194,3 +198,4 @@ def print_accounts():
 	result = c.execute(command)
 	for account in result:
 		print(account)
+	close(db)
