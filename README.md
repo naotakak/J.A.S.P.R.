@@ -37,7 +37,7 @@ After running app.py, you can now go to localhost:5000 in your web browser, and 
   </li>
   <li>
   
-  `python3`
+  `python 2.7` !!!!NOT!!!! `python3` 
   </li>
   <li>
   
